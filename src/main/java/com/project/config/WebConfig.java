@@ -13,7 +13,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         return new Class[0];
     }
 
-    @Override
+    @Override// показываем нахождение файла конфигурации Spring
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{SpringConfig.class};
     }

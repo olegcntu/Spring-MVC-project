@@ -21,9 +21,9 @@ import java.rmi.registry.Registry;
 @Configuration
 @ComponentScan("com.project")
 @EnableWebMvc
-public class SpringConfig implements WebMvcConfigurer{
+public class SpringConfig implements WebMvcConfigurer {
 
-     private final ApplicationContext applicationContext;
+    private final ApplicationContext applicationContext;
 
     @Autowired
     public SpringConfig(ApplicationContext applicationContext) {
@@ -31,7 +31,7 @@ public class SpringConfig implements WebMvcConfigurer{
     }
 
     @Bean
-    public SpringResourceTemplateResolver templateResolver() {
+    public SpringResourceTemplateResolver templateResolver() {// настройка Thymeleaf
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
@@ -40,7 +40,7 @@ public class SpringConfig implements WebMvcConfigurer{
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine() {
+    public SpringTemplateEngine templateEngine() {// настройка Thymeleaf
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
@@ -48,9 +48,9 @@ public class SpringConfig implements WebMvcConfigurer{
     }
 
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
+    public void configureViewResolvers(ViewResolverRegistry registry) {// настройка Thymeleaf
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-    }
+}
