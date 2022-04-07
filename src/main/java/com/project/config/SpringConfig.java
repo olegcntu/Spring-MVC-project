@@ -19,7 +19,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import java.rmi.registry.Registry;
 
 @Configuration
-@ComponentScan("com.project")
+@ComponentScan("com")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
@@ -36,11 +36,12 @@ public class SpringConfig implements WebMvcConfigurer {
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
+        templateResolver.setCacheable(false);
         return templateResolver;
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine() {// настройка Thymeleaf
+    public SpringTemplateEngine templateEngine() {// настройка Thymeleaf рендеринг странички
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);

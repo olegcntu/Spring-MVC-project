@@ -14,10 +14,10 @@ public class ArticleDAO {
     private List<Article> articles = new ArrayList<>();
 
     {
-        articles.add(new Article("problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article("problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article("problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article("problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
+        articles.add(new Article(1, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
+        articles.add(new Article(2, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
+        articles.add(new Article(3, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
+        articles.add(new Article(4, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
     }
 
     public List<Article> index() {
