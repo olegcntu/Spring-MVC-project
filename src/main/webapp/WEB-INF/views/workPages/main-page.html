@@ -14,10 +14,10 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Album example</h1>
-                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                    entirely.</p>
+                <h1 class="fw-light">Article zone</h1>
+                <p class="lead text-muted">Here you can write your own article, read others and comment on them.
+                    I hope this will help you become more objective and understand the topic deeper.
+                    Please do not use profanity or insult users as you may be blocked</p>
                 <p>
                     <a href="#" class="btn btn-primary my-2">Main call to action</a>
                     <a href="#" class="btn btn-secondary my-2">Secondary action</a>
@@ -45,8 +45,11 @@
                                 <p class="card-text" th:text="${articles.getTopic()}">Topic</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+
+                                        <form th:action="@{/workPage/article/{id}(id=${articles.getId()})}">
+                                            <button class="btn btn-sm btn-outline-secondary">View</button>
+                                        </form>
+
                                     </div>
                                     <small class="text-muted" th:text="${articles.getDate()}">time</small>
                                 </div>

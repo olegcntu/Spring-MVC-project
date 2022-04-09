@@ -1,6 +1,11 @@
 package com.project.models;
 
+import com.project.dao.ArticleDAO;
+import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Article {
     private int id;
@@ -27,8 +32,10 @@ public class Article {
         return grade;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.MM.dd  hh:mm");
+        return formatForDateNow.format(date);
     }
 
     public String getTxt() {
@@ -39,13 +46,12 @@ public class Article {
         return id;
     }
 
-    public Article(int id, String name, String topic, Author author, int grade, Date date) {
-        this.id=id;
+    public Article(String name, String topic, String txt) {
+        this.id= ++ArticleDAO.ARTICLE_ID;
         this.name = name;
         this.topic = topic;
-        this.author = author;
-        this.grade = grade;
-        this.date = date;
+        this.date = new Date();
+        this.txt = txt;
     }
 
     @Override
@@ -56,6 +62,6 @@ public class Article {
                 ", author=" + author +
                 ", grade=" + grade +
                 ", date=" + date +
-                '}'+"/n";
+                '}' + "/n";
     }
 }

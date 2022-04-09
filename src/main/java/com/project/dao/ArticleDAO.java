@@ -10,18 +10,25 @@ import java.util.List;
 
 @Component
 public class ArticleDAO {
-    private static int ARTICLE_ID = 0;
+    public static int ARTICLE_ID = 0;
     private List<Article> articles = new ArrayList<>();
 
     {
-        articles.add(new Article(1, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article(2, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article(3, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
-        articles.add(new Article(4, "problem with kv-1C", "tenk problem", new Author("Krasavin"), 5, new Date()));
+        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
     }
 
     public List<Article> index() {
         return articles;
     }
 
+    public void add(Article article){
+        articles.add(article);
+    }
+
+    public Article showArticle(int id){
+        return articles.stream().filter(articles->articles.getId()==id).findAny().orElse(null);
+    }
 }
