@@ -14,21 +14,32 @@ public class ArticleDAO {
     private List<Article> articles = new ArrayList<>();
 
     {
-        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
-        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
-        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
-        articles.add(new Article( "problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article("problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article("problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article("problem with kv-1C", "tenk problem", "qwer"));
+        articles.add(new Article("problem with kv-1C", "tenk problem", "qwer"));
     }
 
     public List<Article> index() {
         return articles;
     }
 
-    public void add(Article article){
+    public void add(Article article) {
         articles.add(article);
     }
 
-    public Article showArticle(int id){
-        return articles.stream().filter(articles->articles.getId()==id).findAny().orElse(null);
+    public Article showArticle(int id) {
+        return articles.stream().filter(articles -> articles.getId() == id).findAny().orElse(null);
+    }
+
+    public void update(int id, String name, String topic, String txt) {
+        Article updateArticle = this.showArticle(id);
+        updateArticle.setName(name);
+        updateArticle.setTopic(topic);
+        updateArticle.setTxt(txt);
+    }
+
+    public void delete(int id){
+        articles.remove(showArticle(id));
     }
 }

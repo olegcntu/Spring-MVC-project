@@ -15,7 +15,21 @@
     <output class="form-control" th:text="${article.getTopic()}">text</output>
     <br>
     <output class="form-control" th:text="${article.getTxt()}">text</output>
+
+
+    <form th:method="DELETE" th:action="@{/workPage/delete/{id}(id=${article.getId()})}">
+        <input class="btn btn-secondary my-2" type="submit" value="Delete!"/>
+    </form>
+
+    <form th:method="GET" th:action="@{/workPage/article/edit/{id}(id=${article.getId()})} ">
+        <input class="btn btn-primary my-2" type="submit" value="Edit!"/>
+    </form>
+
+
+
+
 </div>
+
 
 <div th:insert="~{workPages/blocks/footer :: footer}"></div>
 

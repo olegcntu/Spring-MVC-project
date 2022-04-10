@@ -16,6 +16,30 @@ public class Article {
     private Date date;
     private String txt;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setTxt(String txt) {
+        this.txt = txt;
+    }
+
     public String getName() {
         return name;
     }
@@ -46,8 +70,10 @@ public class Article {
         return id;
     }
 
+    public Article(){};
+
     public Article(String name, String topic, String txt) {
-        this.id= ++ArticleDAO.ARTICLE_ID;
+        this.id = ++ArticleDAO.ARTICLE_ID;
         this.name = name;
         this.topic = topic;
         this.date = new Date();
