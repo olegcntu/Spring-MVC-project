@@ -21,7 +21,7 @@ import java.rmi.registry.Registry;
 @Configuration
 @ComponentScan("com")
 @EnableWebMvc
-public class SpringConfig implements WebMvcConfigurer {
+public class SpringConfig implements WebMvcConfigurer  {
 
     private final ApplicationContext applicationContext;
 
@@ -53,5 +53,9 @@ public class SpringConfig implements WebMvcConfigurer {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
+    }
+
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/enter").setViewName("authorizationPages/enterPage");
     }
 }

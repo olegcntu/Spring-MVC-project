@@ -56,6 +56,7 @@ public class Article {
         return grade;
     }
 
+
     public String getDate() {
 
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.MM.dd  hh:mm");

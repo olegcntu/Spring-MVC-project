@@ -19,6 +19,8 @@ public class WorkController {
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
         model.addAttribute("article", articleDAO.index());
+        model.addAttribute("article1", new Article());
+
         return "workPages/main-page";
     }
 
