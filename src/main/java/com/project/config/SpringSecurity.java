@@ -43,5 +43,5 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }// Метод шифрования пароля
 }
