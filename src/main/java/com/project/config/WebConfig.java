@@ -7,6 +7,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+//Настраиваем Диспетчер Сервлета
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -21,7 +22,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
-    }
+    }//Здесь мы настроили мэпинг сервлета на “/” и поэтому все запросы будут перехвачены Диспетчером Сервлета Spring.
 
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {

@@ -19,9 +19,10 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import java.rmi.registry.Registry;
 
 @Configuration
-@ComponentScan("com")
+@ComponentScan("com.project")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer  {
+
 
     private final ApplicationContext applicationContext;
 
@@ -31,7 +32,7 @@ public class SpringConfig implements WebMvcConfigurer  {
     }
 
     @Bean
-    public SpringResourceTemplateResolver templateResolver() {// настройка Thymeleaf
+    public SpringResourceTemplateResolver templateResolver() {//метод по поиску шаблонов
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
@@ -55,7 +56,5 @@ public class SpringConfig implements WebMvcConfigurer  {
         registry.viewResolver(resolver);
     }
 
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/enter").setViewName("authorizationPages/enterPage");
-    }
+
 }
