@@ -24,7 +24,13 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/workPage/add").access("hasRole('ROLE_USER')")
-                .and().formLogin().defaultSuccessUrl("/workPage/mainPage", false);
+                .and()
+                .formLogin()//Настроить страницу входа
+                .loginPage("/enter")//Путь доступа к странице входа
+               // .loginProcessingUrl("/login.do")//Путь к отправке формы на странице входа
+                .failureUrl("/mainPage/workPage")//Путь для перехода после неудачного входа в систему
+                .defaultSuccessUrl("/mainPage/workPage");//Путь перехода по умолчанию после успешного входа в систему
+
     }
 
     @Autowired

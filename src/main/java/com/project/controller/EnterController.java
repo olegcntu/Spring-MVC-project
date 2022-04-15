@@ -13,18 +13,18 @@ public class EnterController {
     @GetMapping("/enter")
     public String index(Model model) {
 
-        return "authorizationPages/enterPage";
+        return "authorizationPages/enter-page";
     }
 
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        return "authorizationPages/registrationPage";
+        return "authorizationPages/registration-page";
     }
 
     @GetMapping("/renewal")
     public String renewal(Model model) {
 
-        return "authorizationPages/passwordResetPage";
+        return "authorizationPages/password-reset-page";
     }
 }

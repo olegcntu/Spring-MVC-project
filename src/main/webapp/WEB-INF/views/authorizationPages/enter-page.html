@@ -138,10 +138,11 @@
 <body>
   <h1>ARTICLE ZONE</h1>
 <div id="wrapper">
-	<form id="signin"  th:method="GET" th:action="@{/workPage/mainPage}" autocomplete="off">
-		<input type="text" id="user" name="user" placeholder="e-mail" />
+	<form id="signin"  th:action="@{/enter}" method="post" autocomplete="off">
+		<input type="text" id="username" name="username" placeholder="e-mail" />
 		<input type="password" id="password" name="password" placeholder="password" />
 		<button type="submit">&#xf0da;</button>
+
 		<p>forgot your password? <a th:href="@{/renewal}">click here</a></p>
         <p>don't you have an account? <a th:href="@{/registration}">click here</a></p>
 	</form>
