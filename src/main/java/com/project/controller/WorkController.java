@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.config.SpringConfig;
 import com.project.dao.ArticleDAO;
+import com.project.dao.AuthorDAO;
 import com.project.models.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,6 +16,9 @@ public class WorkController {
 
     @Autowired
     private ArticleDAO articleDAO;
+
+    @Autowired
+    private AuthorDAO authorDAO;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -58,6 +62,7 @@ public class WorkController {
 
     @GetMapping("/authors")
     public String authorsPage(Model model) {
+        model.addAttribute("authors",authorDAO.index());
         return "workPages/all-authors-page";
     }
 

@@ -2,6 +2,8 @@ package com.project.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "author", schema = "public", catalog = "forum")
 public class AuthorEntity {
@@ -10,14 +12,13 @@ public class AuthorEntity {
     private Long age;
     private String about;
 
-    @Override
-    public String toString() {
-        return "AuthorEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", about='" + about + '\'' +
-                '}';
+    public AuthorEntity( String name, Long age, String about) {
+        this.name = name;
+        this.age = age;
+        this.about = about;
+    }
+
+    public AuthorEntity() {
     }
 
     @Id
@@ -26,6 +27,7 @@ public class AuthorEntity {
         return id;
     }
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public void setId(long id) {
         this.id = id;
     }
@@ -68,9 +70,9 @@ public class AuthorEntity {
         AuthorEntity that = (AuthorEntity) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (age != null ? !age.equals(that.age) : that.age != null) return false;
-        if (about != null ? !about.equals(that.about) : that.about != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(age, that.age)) return false;
+        if (!Objects.equals(about, that.about)) return false;
 
         return true;
     }
@@ -82,5 +84,14 @@ public class AuthorEntity {
         result = 31 * result + (age != null ? age.hashCode() : 0);
         result = 31 * result + (about != null ? about.hashCode() : 0);
         return result;
+    }
+    @Override
+    public String toString() {
+        return "AuthorEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", about='" + about + '\'' +
+                '}';
     }
 }
