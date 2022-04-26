@@ -34,15 +34,13 @@ public class Main {
     }
 
     public static void main(final String[] args) throws Exception {
-        AuthorEntity a = new AuthorEntity("1",new Long(1),"1");
-
-
         final EntityManager entityManager = getSession();
 
         entityManager.getTransaction().begin();
-        // List list = entityManager.createQuery("FROM AuthorEntity").getResultList();
+        List list = entityManager.createQuery("FROM ArticleEntity").getResultList();
         entityManager.getTransaction().commit();
         entityManager.close();
+        System.out.println(list.get(0));
 
     }
 }

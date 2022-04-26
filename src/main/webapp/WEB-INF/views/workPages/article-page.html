@@ -14,7 +14,7 @@
     <br>
     <output class="form-control" th:text="${article.getTopic()}">text</output>
     <br>
-    <output class="form-control" th:text="${article.getTxt()}">text</output>
+    <output class="form-control" th:text="${article.getText()}">text</output>
 
 
     <form th:method="DELETE" th:action="@{/workPage/delete/{id}(id=${article.getId()})}">

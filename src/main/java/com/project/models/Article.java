@@ -74,7 +74,7 @@ public class Article {
     public Article(){};
 
     public Article(String name, String topic, String txt) {
-        this.id = ++ArticleDAO.ARTICLE_ID;
+       // this.id = ++ArticleDAO.ARTICLE_ID;
         this.name = name;
         this.topic = topic;
         this.date = new Date();
