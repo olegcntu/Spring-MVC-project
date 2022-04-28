@@ -1,16 +1,12 @@
 package com.project.dao;
 
 import com.project.entity.ArticleEntity;
-import com.project.models.Article;
-import com.project.models.Author;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -46,9 +42,14 @@ public class ArticleDAO {
         return articles;
     }
 
-//    public void add(Article article) {
-//        articles.add(article);
-//    }
+    public void add(ArticleEntity article) {
+        final EntityManager entityManager = getManager();
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(article);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 
     public ArticleEntity showArticle(int id) {
         return articles.stream().filter(articles -> articles.getId() == id).findAny().orElse(null);

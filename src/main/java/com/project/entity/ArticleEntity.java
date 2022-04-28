@@ -12,14 +12,17 @@ public class ArticleEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     @Column(name = "name")
     private String name;
+
 
     @Column(name = "topic")
     private String topic;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private AuthorEntity author;
 
     @Column(name = "grade")
     private Long grade;
@@ -54,12 +57,12 @@ public class ArticleEntity {
         this.grade = grade;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public AuthorEntity getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(AuthorEntity author) {
+        this.author = author;
     }
 
     public String getTopic() {

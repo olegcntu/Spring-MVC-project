@@ -1,19 +1,11 @@
-import com.project.entity.AuthorEntity;
-import com.project.models.Author;
-import jakarta.persistence.Entity;
+import com.project.entity.ArticleEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.metamodel.EntityType;
 import org.hibernate.HibernateException;
-import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY;
@@ -29,18 +21,19 @@ public class Main {
         }
     }
 
-    public static EntityManager getSession() throws HibernateException {
+    public static EntityManager getManager() throws HibernateException {
         return ENTITY_MANAGER_FACTORY.createEntityManager();
     }
 
     public static void main(final String[] args) throws Exception {
-        final EntityManager entityManager = getSession();
+        final EntityManager entityManager = getManager();
+        ArticleEntity article= new ArticleEntity();
 
+        System.out.println(article.getId());
         entityManager.getTransaction().begin();
-        List list = entityManager.createQuery("FROM ArticleEntity").getResultList();
+        entityManager.merge(article);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println(list.get(0));
 
     }
 }

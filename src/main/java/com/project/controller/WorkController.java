@@ -1,11 +1,8 @@
 package com.project.controller;
 
-import com.project.config.SpringConfig;
 import com.project.dao.ArticleDAO;
-import com.project.dao.AuthorDAO;
-import com.project.models.Article;
+import com.project.entity.ArticleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +14,6 @@ public class WorkController {
     @Autowired
     private ArticleDAO articleDAO;
 
-    @Autowired
-    private AuthorDAO authorDAO;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -37,8 +32,9 @@ public class WorkController {
     @PostMapping("/add")
     public String articleAdd(@RequestParam String title, @RequestParam String topic,
                              @RequestParam String all_txt, Model model) {
-        Article article = new Article(title, topic, all_txt);
-        //articleDAO.add(article);
+        ArticleEntity article = new ArticleEntity();
+        article.setName("12");
+        articleDAO.add(article);
         return "workPages/to-main-page";
     }
 
@@ -60,12 +56,6 @@ public class WorkController {
         return "workPages/edit-page";
     }
 
-    @GetMapping("/authors")
-    public String authorsPage(Model model) {
-        model.addAttribute("authors",authorDAO.index());
-        return "workPages/all-authors-page";
-    }
-
 
     @PatchMapping("/result/{id}")
     public String edit(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("topic")
@@ -76,7 +66,7 @@ public class WorkController {
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id, Model model) {
-       // articleDAO.delete(id);
+        // articleDAO.delete(id);
         return "workPages/to-main-page";
     }
 }
