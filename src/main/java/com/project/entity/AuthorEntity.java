@@ -8,8 +8,7 @@ import java.util.Objects;
 @Table(name = "author")
 public class AuthorEntity {
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
 

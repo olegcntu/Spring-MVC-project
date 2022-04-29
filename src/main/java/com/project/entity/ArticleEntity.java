@@ -2,14 +2,17 @@ package com.project.entity;
 
 import jakarta.persistence.*;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 @Table(name = "article")
 public class ArticleEntity {
+
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
 
@@ -28,7 +31,7 @@ public class ArticleEntity {
     private Long grade;
 
     @Column(name = "date")
-    private LocalDate date;
+    private Date date;
 
     @Column(name = "text")
     private String text;
@@ -41,11 +44,13 @@ public class ArticleEntity {
         this.text = text;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDate() {
+        if(date==null){return "0";}
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.MM.dd ");
+        return formatForDateNow.format(date);
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -87,5 +92,15 @@ public class ArticleEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ArticleEntity() {
+    }
+
+    public ArticleEntity(String name, String topic, String text) {
+        this.name = name;
+        this.topic = topic;
+        this.text = text;
+        this.date = new Date();
     }
 }

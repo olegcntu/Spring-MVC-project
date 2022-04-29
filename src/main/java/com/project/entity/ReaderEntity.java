@@ -3,10 +3,10 @@ package com.project.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"user\"")
-public class UserEntity {
+@Table(name = "reader")
+public class ReaderEntity {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Lob
@@ -14,15 +14,15 @@ public class UserEntity {
     private String name;
 
     @Lob
-    @Column(name = "\"eMail\"")
-    private String eMail;
+    @Column(name = "email")
+    private String email;
 
-    public String getEMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

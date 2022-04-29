@@ -55,14 +55,27 @@ public class ArticleDAO {
         return articles.stream().filter(articles -> articles.getId() == id).findAny().orElse(null);
     }
 
-//    public void update(int id, String name, String topic, String txt) {
-//        Article updateArticle = this.showArticle(id);
-//        updateArticle.setName(name);
-//        updateArticle.setTopic(topic);
-//        updateArticle.setTxt(txt);
-//    }
+    public void update(int id, String name, String topic, String txt) {
+        final EntityManager entityManager = getManager();
+        entityManager.getTransaction().begin();
+        ArticleEntity article=entityManager.find(ArticleEntity.class,id);
 
-//    public void delete(int id){
-//        articles.remove(showArticle(id));
-//    }
+        article.setName(name);
+        article.setTopic(topic);
+        article.setText(txt);
+
+        entityManager.persist(article);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public void delete(int id) {
+        final EntityManager entityManager = getManager();
+        ArticleEntity article= showArticle(id);
+
+        entityManager.getTransaction().begin();
+        entityManager.remove(article);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 }

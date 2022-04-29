@@ -32,8 +32,7 @@ public class WorkController {
     @PostMapping("/add")
     public String articleAdd(@RequestParam String title, @RequestParam String topic,
                              @RequestParam String all_txt, Model model) {
-        ArticleEntity article = new ArticleEntity();
-        article.setName("12");
+        ArticleEntity article = new ArticleEntity(title, topic, all_txt);
         articleDAO.add(article);
         return "workPages/to-main-page";
     }
@@ -59,14 +58,15 @@ public class WorkController {
 
     @PatchMapping("/result/{id}")
     public String edit(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("topic")
-            String topic, @RequestParam("txt") String txt, Model model) {
-        //articleDAO.update(id, name, topic, txt);
+            String topic, @RequestParam("text") String text, Model model) {
+
+        articleDAO.update(id, name, topic, text);
         return "workPages/to-main-page";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id, Model model) {
-        // articleDAO.delete(id);
+        articleDAO.delete(id);
         return "workPages/to-main-page";
     }
 }

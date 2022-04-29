@@ -1,11 +1,9 @@
 import com.project.entity.ArticleEntity;
+import com.project.entity.ReaderEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
-
-
-import java.util.List;
 
 public class Main {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY;
@@ -26,12 +24,14 @@ public class Main {
     }
 
     public static void main(final String[] args) throws Exception {
-        final EntityManager entityManager = getManager();
-        ArticleEntity article= new ArticleEntity();
+       ReaderEntity article= new ReaderEntity();
 
-        System.out.println(article.getId());
+
+        final EntityManager entityManager = getManager();
+
         entityManager.getTransaction().begin();
         entityManager.merge(article);
+
         entityManager.getTransaction().commit();
         entityManager.close();
 
