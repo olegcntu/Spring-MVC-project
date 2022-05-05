@@ -27,21 +27,25 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()//Настроить страницу входа
                 .loginPage("/enter")//Путь доступа к странице входа
-               // .loginProcessingUrl("/login.do")//Путь к отправке формы на странице входа
-                .failureUrl("/mainPage/workPage")//Путь для перехода после неудачного входа в систему
-                .defaultSuccessUrl("/mainPage/workPage");//Путь перехода по умолчанию после успешного входа в систему
+                .failureUrl("/renewal")//Путь для перехода после неудачного входа в систему
+                .defaultSuccessUrl("/mainPage/workPage")//Путь перехода по умолчанию после успешного входа в систему
+                .and()
+                .logout().logoutSuccessUrl("/");//выход НЕРАБОТАЕТ!
 
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.inMemoryAuthentication().withUser("1")
-                .password(passwordEncoder().encode("1")).roles("USER");
+                .password(passwordEncoder().encode("1"))
+                .roles("USER");
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }// Метод шифрования пароля
+
+
 }

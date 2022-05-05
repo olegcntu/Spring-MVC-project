@@ -24,6 +24,9 @@ public class AuthorEntity {
     @Column(name = "email")
     private String eMail;
 
+    @Column(name = "password")
+    private String password;
+
     public String GetEMail() {
         return eMail;
     }
@@ -60,7 +63,23 @@ public class AuthorEntity {
         return id;
     }
 
-    public AuthorEntity( String name, Long age, String about) {
+    public String getEMail() {
+        return eMail;
+    }
+
+    public void setEMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public AuthorEntity(String name, Long age, String about) {
         this.name = name;
         this.age = age;
         this.about = about;

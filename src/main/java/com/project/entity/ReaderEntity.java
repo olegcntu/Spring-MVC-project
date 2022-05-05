@@ -9,13 +9,14 @@ public class ReaderEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Lob
     @Column(name = "name")
     private String name;
 
-    @Lob
     @Column(name = "email")
     private String email;
+
+    @Column(name="password")
+    private String password;
 
     public String getEmail() {
         return email;
@@ -39,5 +40,13 @@ public class ReaderEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

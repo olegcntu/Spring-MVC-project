@@ -22,6 +22,19 @@ public class EnterController {
         return "authorizationPages/registration-page";
     }
 
+    @PostMapping("/registration")
+    public String registration(Model model, @RequestParam("email") String email,
+                               @RequestParam("name") String name,
+                               @RequestParam("psw") String psw,
+                               @RequestParam("pswRepeat") String pswRepeat) {
+        System.out.println(email);
+        System.out.println(name);
+        System.out.println(psw);
+        System.out.println(pswRepeat);
+
+        return "authorizationPages/registration-page";
+    }
+
     @GetMapping("/renewal")
     public String renewal(Model model) {
 

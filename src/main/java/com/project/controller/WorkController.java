@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/workPage")
 public class WorkController {
@@ -30,9 +32,12 @@ public class WorkController {
     }
 
     @PostMapping("/add")
-    public String articleAdd(@RequestParam String title, @RequestParam String topic,
+    public String articleAdd(Principal principal, @RequestParam String title, @RequestParam String topic,
                              @RequestParam String all_txt, Model model) {
         ArticleEntity article = new ArticleEntity(title, topic, all_txt);
+
+       // System.out.println(principal.getName()); имя пользователя, который делает действие
+
         articleDAO.add(article);
         return "workPages/to-main-page";
     }
