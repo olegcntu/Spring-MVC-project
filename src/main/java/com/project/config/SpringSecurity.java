@@ -28,9 +28,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .formLogin()//Настроить страницу входа
                 .loginPage("/enter")//Путь доступа к странице входа
                // .loginProcessingUrl("/login.do")//Путь к отправке формы на странице входа
-                .failureUrl("/mainPage/workPage")//Путь для перехода после неудачного входа в систему
-                .defaultSuccessUrl("/mainPage/workPage");//Путь перехода по умолчанию после успешного входа в систему
-
+                .failureUrl("/workPage/mainPage")//Путь для перехода после неудачного входа в систему
+                .defaultSuccessUrl("/workPage/mainPage");//Путь перехода по умолчанию после успешного входа в систему
     }
 
     @Autowired
